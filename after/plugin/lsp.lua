@@ -7,7 +7,8 @@ lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
   'html',
-  'cssls'
+  'cssls',
+  'pylsp', -- https://github.com/python-lsp/python-lsp-server
 })
 
 -- Fix Undefined global 'vim'

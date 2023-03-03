@@ -9,6 +9,7 @@ lsp.ensure_installed({
   'html',
   'cssls',
   'pylsp', -- https://github.com/python-lsp/python-lsp-server
+  'lua_ls'
 })
 
 -- Fix Undefined global 'vim'
@@ -17,6 +18,17 @@ lsp.configure('lua-language-server', {
         Lua = {
             diagnostics = {
                 globals = { 'vim' }
+            }
+        },
+        pylsp = {
+            plugins = {
+                autopep8 = {
+                    enabled = true
+                },
+                pylint = {
+                    enabled = true,
+                },
+
             }
         }
     }

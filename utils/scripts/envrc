@@ -1,8 +1,0 @@
-echo "activating virtualenv"
-
-if [[ -d ./venv ]] ; then
-        source ./venv/bin/activate
-        echo "virtualenv activated"
-else
-  echo "Virtualenv not found"
-fi

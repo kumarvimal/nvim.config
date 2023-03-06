@@ -1,0 +1,3 @@
+`lua require('lsp-zero.check').inspect_settings('pylsp')`
+
+

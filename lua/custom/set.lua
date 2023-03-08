@@ -1,3 +1,4 @@
+vim.opt.encoding = "UTF-8"
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
@@ -10,7 +11,7 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false

@@ -89,9 +89,20 @@ return require('packer').startup(function(use)
         end
     }
 
-    -- Icons (somehow not working in iterm)
-    -- Ref: https://github.com/ryanoasis/vim-devicons
-    -- use('ryanoasis/vim-devicons')
+    use { -- Add indentation guides even on blank lines
+        'lukas-reineke/indent-blankline.nvim',
+        -- Enable `lukas-reineke/indent-blankline.nvim`
+        -- See `:help indent_blankline.txt`
+        opts = {
+            char = '┊',
+            show_trailing_blankline_indent = false,
+        },
+    }
+
+    use 'tpope/vim-sleuth'
+
+    -- "gc" to comment in visual mode
+    use { 'numToStr/Comment.nvim' }
 
     -- Status line (todo: icons are not working  in term)
     -- Ref: https://github.com/nvim-lualine/lualine.nvim

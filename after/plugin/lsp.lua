@@ -27,43 +27,6 @@ lsp.configure('lua-language-server', {
     }
 })
 
-
-function Current_project()
-    local path = os.getenv( "HOME" ) .. '/.last_opened_project'
-    -- scripts/sync_envrs.bsh ensure this file
-    local f = assert(io.open(path, 'r'))
-    local s = f:read("*all"):gsub("%s", "")
-    f:close()
-    return s
-end
-
-lsp.configure('pylsp', {
-  on_attach = function(client, bufnr)
-        print("pylsp loaded")
-  end,
-  settings = {
-    configurationSources = "flake8",
-    formatCommand = {"black"},
-    plugins = {
-        pycodestyle = {enabled = false},
-        mccabe =      {enabled = true},
-        pyflakes =    {enabled = false},
-        autopep8 =    {enabled = true},
-        pylint = {
-            enabled = true,
-            executable = "pylint",
-            args = {'--rcfile' .. ' ' .. Current_project() .. '/pylintrc'}
-        },
-        flake8 =     { enabled = true},
-        pyls_isort = { enabled = true },
-        pylsp_mypy = { enabled = true },
-
-    }
-  }
-})
-
-lsp.setup()
-
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({

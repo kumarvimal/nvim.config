@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
-"""
-Sync envrc to all target directories
-
-I am primarily using this to activate
-python virtual env. My virtualenv are in 
-venv directory in evebry python last_opened_projec.
-
-Ref https://github.com/direnv/direnv
-"""
+# Ref https://github.com/direnv/direnv
 set -Eeuo pipefail
 
 envrc="echo \"activating virtualenv\"\n
@@ -20,16 +12,22 @@ else\n
   echo \"Virtualenv not found\"\n
 fi
 "
-dirs=$ENCRC_SYNC_TARGET_DIRS
-# e.g /user/home/dev/comp/prefix-*,user/home/dev/dir/*
+dirs=$ENCRC_SYNC_TARGET_DIRS # csv of directory patterns, e.g a/*,b/c/pre*
 
 for target_dir in ${dirs//,/ }
 do
   for d in $target_dir; do
-      echo -e $envrc >  "$d/.envrc"
-      direnv allow "$d"
-      echo  "Synced to $d"
-  done
+      venv="$d/venv"
+      if [ -d "$venv" ]; then 
+        if [ ! -L "$venv" ]; then
+          # sync if directory is not a symlink 
+          # and a 'venv' directory exist 
+          echo "* syncing:  $d"
+          echo -e $envrc >  "$d/.envrc"
+          direnv allow "$d"
+        fi
+      fi
+        done
 done
 
 echo "done!"

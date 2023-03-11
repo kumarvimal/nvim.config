@@ -1,3 +1,7 @@
 cmd
 spellgood
 cr
+venv
+symlink
+neovim
+vim

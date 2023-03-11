@@ -1,3 +1,4 @@
 `lua require('lsp-zero.check').inspect_settings('pylsp')`
 
 
+`vim.lsp.buf.format()`

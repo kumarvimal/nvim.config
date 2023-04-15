@@ -6,3 +6,4 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "zg", '<cmd>spellgood<cr>')
 
+vim.keymap.set('n', '<Leader>wt', [[:lua vim.lsp.buf.format()<cr> <bar> :%s/\s\+$//e<cr>]])

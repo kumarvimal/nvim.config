@@ -8,7 +8,7 @@ lsp.ensure_installed({
 	"rust_analyzer",
 	"html",
 	"cssls",
-	"pylsp", -- https://github.com/python-lsp/python-lsp-server
+	-- "pylsp", -- https://github.com/python-lsp/python-lsp-server
 	"lua_ls",
 	"yamlls",
 	"jsonls",
